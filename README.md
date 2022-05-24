@@ -12,4 +12,9 @@ The Minimal Edition does not contains Packages that follows a ">" on [https://gi
 
 ## Boot from the Installation-Volume
 1 . Choose the tz, keytable, lang and whether you would like to boot from proprietary or open source drivers
-2. 
+2. Install Manjaro ;) (I recommend to encrypt your OS)
+3. Boot Manjaro
+
+# Step 1 - Manjaro Post Installation
+Follow: *manjaro-post-install-step-1.md*
+
