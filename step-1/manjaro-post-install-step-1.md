@@ -26,9 +26,16 @@ General INIT Maintenance:
   
   * I recommend to use a external Drive for that.
 
-* Open Pamac and Update your System
+* Open Pamac
+
+  * Use Local Mirrors in Sessings
+  * Update your System
 
 * Open Gnome Add Folder and Add all not needed default apps to a folder (or do this in the app overview)
 
 * reboot your system and continue on *step 2*
+
+  * run ./manjaro-post-install-step-2.sh as root (e.g. with sudo)
+  
+ 
 
