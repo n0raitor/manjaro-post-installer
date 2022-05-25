@@ -26,6 +26,7 @@ Enable Trim for SSD - optimize performance of ssd-drive
 ```bash
 sudo systemctl status fstrim.timer  # should be inactive, if not, skip to next heading
 
+sudo systemctl enable fstrim.timer
 sudo systemctl start fstrim.timer
 sudo systemctl status fstrim.timer  # should be active now
 ```
