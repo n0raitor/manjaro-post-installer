@@ -32,4 +32,3 @@ General INIT Maintenance:
 
 * reboot your system and continue on *step 2*
 
-* 
