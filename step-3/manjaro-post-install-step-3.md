@@ -33,6 +33,9 @@ sudo systemctl status fstrim.timer  # should be active now
 ## Remove unuseful Applications
 Go to Pamac and remove apps
 
+## Open Extensions
+... And Enable or Install Extensions
+
 ## (optional) Clean Your System and Check for Errors
 See on my wiki: [https://n0raitor.com/archlinux](https://n0raitor.com/archlinux)
 

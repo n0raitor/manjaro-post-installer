@@ -26,6 +26,11 @@ General INIT Maintenance:
   
   * I recommend to use a external Drive for that.
 
+* Edit /etc/pacman.conf
+
+  * uncommend color and parallel downloads
+  * add ILoveCandy
+
 * Open Pamac
 
   * Use Local Mirrors in Sessings
