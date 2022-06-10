@@ -15,7 +15,7 @@ pacman_packages=( brave-browser yay nautilus-terminal arc-gtk-theme arc-icon-the
 
 aur_packages=( 1password archlinux-artwork arch-logo-dark-wallpapers arch-linux-2d-wallpapers ttf-ms-fonts ttf-hackgen brother-dcpj315w balena-etcher bootstrap-studio edb-debugger-git github-desktop-bin gitkraken guitar-pro ida-free jdownloader2 jetbrains-toolbox kali-undercover kazam libreoffice-extension-languagetool maltego protonmail-bridge-bin rambox-bin remarkable slack-desktop spotify synology-drive synology-note-station nvidia-system-monitor-git virtualbox-ext-oracle yed zoom minecraft-launcher multimc-bin)
 
-snap_packages=( flat-remix flat-remix-gtk remmina )
+snap_packages=( remmina )  # optional: flat-remix flat-remix-gtk
 
 flatpak_packages=(  )
 
@@ -114,9 +114,9 @@ done
 
 
 ### PAMAC ###
-echo -n "Installing flat-remix-gnome "
-pamac install --no-confirm flat-remix-gnome &>> $logfile
-echo "[OK]"
+#echo -n "Installing flat-remix-gnome "
+#pamac install --no-confirm flat-remix-gnome &>> $logfile
+#echo "[OK]"
 
 echo -n "Installing flat-remix-gnome "
 pamac install --no-confirm balena-etcher &>> $logfile
