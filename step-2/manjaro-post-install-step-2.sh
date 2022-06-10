@@ -118,7 +118,7 @@ done
 #echo -n "Installing flat-remix-gnome "
 #pamac install --no-confirm flat-remix-gnome &>> $logfile
 #echo "[OK]"
-
+echo "### Installing PAMAC-Mode Packages"
 echo -n "Installing flat-remix-gnome "
 pamac install --no-confirm balena-etcher &>> $logfile
 echo "[OK]"
