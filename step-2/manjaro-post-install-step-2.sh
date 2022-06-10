@@ -58,16 +58,17 @@ rm -rf qwingraph_qt5
 echo "[OK]"
 
 # Prepare Ghidra
-mkdir /home/$username/.local/share/ghidra
-cp resources/ghidra/GHIDRA.svg /home/$username/.local/share/ghidra/
-cp resources/ghidra/ghidra.desktop /home/$username/.local/share/applications/
-chown $username /home/$username/.local/share/ghidra/GHIDRA.svg
-chown $username /home/$username/.local/share/applications/ghidra.desktop
-chgrp users /home/$username/.local/share/ghidra/GHIDRA.svg
-chgrp users /home/$username/.local/share/applications/ghidra.desktop
-chmod 644 /home/$username/.local/share/ghidra//GHIDRA.svg
-chmod 744 /home/$username/.local/share/applications/ghidra.desktop
-
+echo -n "Preparing Ghidra "
+mkdir -p ~/.local/share/ghidra
+cp ../resources/ghidra/GHIDRA.svg ~/.local/share/ghidra/
+cp ../resources/ghidra/ghidra.desktop ~/.local/share/applications/
+chown $USER ~/.local/share/ghidra/GHIDRA.svg
+chown $USER ~/.local/share/applications/ghidra.desktop
+sudo chgrp users ~/.local/share/ghidra/GHIDRA.svg
+sudo chgrp users ~/.local/share/applications/ghidra.desktop
+chmod 644 ~/.local/share/ghidra/GHIDRA.svg
+chmod 744 ~/.local/share/applications/ghidra.desktop
+echo "[OK]"
 
 ### Install all Pacman Packages ###
 echo "### Installing Pacman Packages ###"
@@ -121,8 +122,6 @@ done
 echo -n "Installing flat-remix-gnome "
 pamac install --no-confirm balena-etcher &>> $logfile
 echo "[OK]"
-
-
 
 
 echo "ALL DONE"
