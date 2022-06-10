@@ -47,3 +47,5 @@ See on my wiki: [https://n0raitor.com/archlinux](https://n0raitor.com/archlinux)
 
 ## Done
 This is the End of the "Manjaro Post Installer" steps. Feel free to add Issues, if some errors or bug occured or if you have any suggestions
+
+**Appearance**: Feel free to change the appearance e.g. using *flat-remix* [https://drasite.com/](https://drasite.com/)
