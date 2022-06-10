@@ -1,5 +1,7 @@
 # Manjaro Post Installation - Step 3
 
+First I recommend to reboot.
+
 Final Steps
 
 * Set your Default Applications in the Settings of Gnome
