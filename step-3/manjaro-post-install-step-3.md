@@ -8,6 +8,11 @@ Final Steps
 
 * Enable AUR, SNAP, Flatpak in Pamac and take your Settings changes
 
+## SSH-Key
+```bash
+ssh-keygen -t rsa -b 4096 -o -a 100
+```
+
 ## Reduce Swappiness
 Forces System to use as much RAM as possible and reduces hard drive access
 
