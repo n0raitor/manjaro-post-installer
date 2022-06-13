@@ -60,6 +60,14 @@ Go to Pamac and remove apps
 
 See on my wiki: [https://n0raitor.com/archlinux](https://n0raitor.com/archlinux)
 
+## Improve (Laptop) App-Opening Performance and Speed
+
+To Improve the Performance on opening applications, feel free to use Preload to Improve the Speed of Opening Applications intro preloading the application resources. 
+
+```bash
+sudo pacman -S preload
+```
+
 ## Done
 
 This is the End of the "Manjaro Post Installer" steps. Feel free to add Issues, if some errors or bug occured or if you have any suggestions
