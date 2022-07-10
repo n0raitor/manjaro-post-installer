@@ -1,5 +1,9 @@
 #!/bin/bash
 
+install_flatpaks=0
+install_snaps=0
+install_tlp=0
+
 pacman_pak_str=""
 aur_pak_str=""
 snap_pak_str=""
@@ -17,69 +21,110 @@ pacman_pak_str+="brave-browser "
 # Windows Dual Boot Preconditions
 pacman_pak_str+="os-prober dosfstools ntfs-3g gvfs "
 
+# Torrent Downloader
+pacman_pak_str+="qbittorrent "
 
-pacman_pak_str+=""
-pacman_pak_str+=""
-pacman_pak_str+=""
-pacman_pak_str+=""
-pacman_pak_str+=""
-pacman_pak_str+=""
-pacman_pak_str+=""
-pacman_pak_str+=""
-pacman_pak_str+=""
-pacman_pak_str+=""
-pacman_pak_str+=""
-pacman_pak_str+=""
-pacman_pak_str+=""
-pacman_pak_str+=""
+# Battery Manager
+if [ $install_tlp == 1 ]
+then
+	pacman_pak_str+="tlp tlp-rdw "
+fi
 
-#pacman_packages=( telegram-desktop tlp tlp-rdw gnome-games lutris dia vim vim-spell-de vim-spell-en ghex darktable scribus openshot appimagelauncher yay nautilus-terminal arc-gtk-theme arc-icon-theme cantarell-fonts ttf-fira-code noto-fonts noto-fonts-extra noto-fonts-emoji noto-fonts-cjk ttf-roboto ttf-roboto-mono aspell aspell-de aspell-en hyphen hyphen-de hyphen-en neofetch speech-dispatcher unarchiver most system-config-printer tree atom audacity bleachbit brasero calibre ghidra gimp gimp-help-de gnome-builder handbrake ghc cabal-install haskell-language-server inkscape ipython kdenlive libreoffice-still libreoffice-still-de hunspell-de hunspell-en_us mythes-en mythes-de languagetool libmythes nitroshare obs-studio xreader gnome-keyring qbittorrent steam-manjaro glances virtualbox code vlc evolution )
+# For Proton Mail Bridge
+pacman_pak_str+="gnome-keyring "
 
+# Email Client
+pacman_pak_str+="evolution "
+
+# Media Player
+pacman_pak_str+="vlc "
+
+### Comment TODO ###
+
+# Video Recording
+pacman_pak_str+="obs-studio "
+
+# AUR Package Manager
+pacman_pak_str+="yay "
+
+# Fonts
+pacman_pak_str+="ttf-dejavu ttf-liberation adobe-source-sans-pro-fonts ttf-droid ttf-ubuntu-font-family ttf-anonymous-pro ttf-bitstream-vera cantarell-fonts ttf-fira-code noto-fonts noto-fonts-extra noto-fonts-emoji noto-fonts-cjk ttf-roboto ttf-font-awesome ttf-roboto-mono "
+
+# Language Support ( Spell, ...)
+pacman_pak_str+="aspell aspell-de aspell-en hyphen hyphen-de hyphen-en hunspell-de hunspell-en_us mythes-en mythes-de languagetool libmythes "
+
+# Video Converter
+pacman_pak_str+="handbrake "
+
+# Burning
+pacman_pak_str+="brasero "
+
+# MISC
+pacman_pak_str+="gimp gimp-help-de darktable "
+pacman_pak_str+="neofetch "
+pacman_pak_str+="calibre "
+pacman_pak_str+="gnome-builder "
+pacman_pak_str+="ipython "
+pacman_pak_str+="bleachbit "
+pacman_pak_str+="libreoffice-still libreoffice-still-de "
+pacman_pak_str+="ghidra "
+pacman_pak_str+="tree "
+pacman_pak_str+="telegram-desktop "
+pacman_pak_str+="gnome-games lutris "
+pacman_pak_str+="dia ghex "
+pacman_pak_str+="speech-dispatcher "
+pacman_pak_str+="unarchiver most system-config-printer "
+pacman_pak_str+="steam-manjaro "
+pacman_pak_str+="glances "
+pacman_pak_str+="virtualbox "
+pacman_pak_str+="python-virtualenv "
+pacman_pak_str+="filelight baobab "
 
 ######### AUR Packages ###########
 # Arch Images
-aur_pak_str+="archlinux-artwork arch-logo-dark-wallpapers arch-linux-2d-wallpapers"
+aur_pak_str+="archlinux-artwork arch-logo-dark-wallpapers arch-linux-2d-wallpapers "
 
+# Password Manager
+aur_pak_str+="1password "
 
-aur_pak_str+=""
-aur_pak_str+=""
-aur_pak_str+=""
-aur_pak_str+=""
-aur_pak_str+=""
-aur_pak_str+=""
-aur_pak_str+=""
-aur_pak_str+=""
-aur_pak_str+=""
-aur_pak_str+=""
-aur_pak_str+=""
-aur_pak_str+=""
-aur_pak_str+=""
+# Download Manager
+aur_pak_str+="jdownloader2 "
 
-#aur_packages=( 1password preload itch-bin zotero-bin stacer-bin marktext-bin archlinux-artwork arch-logo-dark-wallpapers arch-linux-2d-wallpapers ttf-ms-fonts ttf-hackgen brother-dcpj315w balena-etcher bootstrap-studio edb-debugger-git github-desktop-bin gitkraken guitar-pro ida-free jdownloader2 jetbrains-toolbox kali-undercover kazam libreoffice-extension-languagetool maltego protonmail-bridge-bin rambox-bin remarkable slack-desktop spotify synology-drive synology-note-station nvidia-system-monitor-git virtualbox-ext-oracle yed zoom minecraft-launcher multimc-bin)
+# Mail Bridge
+aur_pak_str+="protonmail-bridge-bin "
 
+# Music Manipulation
+aur_pak_str+="audacium "
+
+# MISC
+aur_pak_str+="guitar-pro "
+aur_pak_str+="bootstrap-studio "
+aur_pak_str+="github-desktop-bin "
+aur_pak_str+="gitkraken "
+aur_pak_str+="zotero-bin "
+aur_pak_str+="virtualbox-ext-oracle "
+#aur_pak_str+="preload "
+aur_pak_str+="itch-bin "
+aur_pak_str+="stacer-bin "
+aur_pak_str+="edb-debugger-git ida-free maltego "
+aur_pak_str+="rambox-bin "
+aur_pak_str+="synology-drive synology-note-station "
+#aur_pak_str+="nvidia-system-monitor-git "
+
+# Fonts
+aur_pak_str+="ttf-ms-fonts ttf-hackgen ttf-mac-fonts ttf-nerd-fonts-hack-complete-git ttf-gentium-basic "
+
+aur_pak_str+="brother-dcpj315w "
+aur_pak_str+="yed "
+aur_pak_str+="zoom "
+aur_pak_str+="minecraft-launcher multimc-bin "
+aur_pak_str+="burpsuite nmap wireshark-qt hashcat "
 
 ######### SNAP Packages ##########
 snap_pak_str+=""
-snap_pak_str+=""
-snap_pak_str+=""
-snap_pak_str+=""
-snap_pak_str+=""
-snap_pak_str+=""
-snap_pak_str+=""
-
-
-#snap_packages=( remmina pomotroid )  # optional: flat-remix flat-remix-gtk
 
 ######## Flatpak Packages ########
 flatpak_pak_str+=""
-flatpak_pak_str+=""
-flatpak_pak_str+=""
-flatpak_pak_str+=""
-flatpak_pak_str+=""
-flatpak_pak_str+=""
-
-
-#flatpak_packages=( "flathub org.signal.Signal" "flathub com.usebottles.bottles" )
 #######################################
 ########## MAIN SCRIPT ################
 #######################################
@@ -89,25 +134,24 @@ function join { local IFS="$1"; shift; echo "$*"; }
 # Import Key For 1Password
 curl -sS https://downloads.1password.com/linux/keys/1password.asc | gpg --import
 
-# Import Key For Spotify
-curl -sS https://download.spotify.com/debian/pubkey_5E3C45D7B312C643.gpg | gpg --import -
+## Import Key For Spotify
+#curl -sS https://download.spotify.com/debian/pubkey_5E3C45D7B312C643.gpg | gpg --import -
 
 # Set NumKey Enabled
-gsettings set org.gnome.desktop.peripherals.keyboard numlock-state true
+#gsettings set org.gnome.desktop.peripherals.keyboard numlock-state true
 
-pacman_packages=($pacman_pak_str)
-aur_packages=($aur_pak_str)
+pacman_packages=( $pacman_pak_str )
+aur_packages=( $aur_pak_str )
 snap_packages=($snap_pak_str)
 flatpak_packages=($flatpak_pak_str)
 
 logfile=step-2.log
 
-echo $pacman_packages
-echo $aur_packages
-echo $snap_packages
-echo $flatpak_packages
 
-exit 0
+for package in "${aur_packages[@]}"
+do
+	echo $package
+done
 
 ###########################################################
 ### Alternative ###
@@ -196,25 +240,36 @@ echo ""
 cd ..
 rm -rf tmpaur
 
-### Installing all Snap Packages ###
-echo "### Installing SNAP Packages ###"
-for package in "${snap_packages[@]}"				  
-do
-	echo -n "Installing $package "
-	snap install $package &>> $logfile
-	echo "[OK]"
-done
+if [ $install_snaps == 1 ]
+then
+	### Installing all Snap Packages ###
+	echo "### Installing SNAP Packages ###"
+	for package in "${snap_packages[@]}"				  
+	do
+		echo -n "Installing $package "
+		snap install $package &>> $logfile
+		echo "[OK]"
+	done
+else
+	echo "SKIPPING SNAPS"
+	sleep 3
+fi
 
 
 ### Installing all Flatpak Packages ###
-echo "### Installing Flatpak Packages ###"
-for package in "${flatpak_packages[@]}"				  
-do
-	echo -n "Installing $package "
-	flatpak -y install $package &>> $logfile
-	echo "[OK]"
-done
-
+if [ $install_flatpaks == 1 ]
+then
+	echo "### Installing Flatpak Packages ###"
+	for package in "${flatpak_packages[@]}"				  
+	do
+		echo -n "Installing $package "
+		flatpak -y install $package &>> $logfile
+		echo "[OK]"
+	done
+else
+	echo "SKIPPING FLATPAK"
+	sleep 3
+fi
 
 ### PAMAC ###
 #echo -n "Installing flat-remix-gnome "
@@ -225,9 +280,25 @@ echo -n "Installing flat-remix-gnome "
 pamac install --no-confirm balena-etcher &>> $logfile
 echo "[OK]"
 
-echo -n "Starting Battery Saving Service "
-sudo systemctl enable tlp &>> $logfile
-sudo systemctl start tlp &>> $logfile
+if [ $install_tlp == 1 ]
+then
+	echo -n "Starting Battery Saving Service "
+	sudo systemctl enable tlp &>> $logfile
+	sudo systemctl start tlp &>> $logfile
+	echo "[OK]"
+fi
+
+echo "Installing PyLint "
+sudo pacman -S python-pip
+# For Python Code Checking
+pip3 install pylint
+echo "[OK]"
+
+echo "Create Venv for Maltego and Install maltego requirements "
+mkdir -p ~/Dokumente/venv/mcti
+python3 -m venv ~/Dokumente/venv/mcti
+~/Dokumente/venv/mcti/bin/pip install requests
+~/Dokumente/venv/mcti/bin/pip install maltego-trx 
 echo "[OK]"
 
 echo "ALL DONE"

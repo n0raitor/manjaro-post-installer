@@ -70,3 +70,33 @@ bash -c "$(curl -sLo- https://git.io/vQgMr)"gpar
 This is the End of the "Manjaro Post Installer" steps. Feel free to add Issues, if some errors or bug occured or if you have any suggestions
 
 **Appearance**: Feel free to change the appearance e.g. using *flat-remix* of [https://drasite.com/](https://drasite.com/)
+
+
+# Optional Packages to install
+
+**Flatpak**
+* flatpak install flathub com.github.micahflee.torbrowser-launcher
+* flatpak install appimage-pool
+* flatpak install flathub com.github.tchx84.Flatseal
+* flatpak install flathub com.usebottles.bottles
+* flatpak install flathub org.signal.Signal
+* flatpak install marktext
+
+**Snap**
+* pycharm-professional --classic
+* datagrip --classic
+* codium --classic
+* gnome-dictionary
+* termius-app
+* musescore
+* spotify
+* atom --classic
+* remmina
+* pomotroid
+
+**General**
+* dolphin-emu
+* retroarch
+* timeshift-autosnap
+    * sudo systemctl enable cronie.service
+* veracrypt
