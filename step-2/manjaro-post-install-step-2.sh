@@ -1,5 +1,37 @@
 #!/bin/bash
 
+pacman_pak_str=""
+aur_pak_str=""
+snap_pak_str=""
+flatpak_pak_str=""
+
+##################################
+############ Settings ############
+##################################
+logfile=step-2.log
+
+######## Pacman Packages #########
+pacman_pak_str+=""
+
+######### AUR Packages ###########
+aur_pak_str+=""
+
+######### SNAP Packages ##########
+snap_pak_str+=""
+
+
+######## Flatpak Packages ########
+flatpak_pak_str+=""
+
+
+#pacman_packages=( telegram-desktop tlp tlp-rdw brave-browser gnome-games lutris dia vim vim-spell-de vim-spell-en ghex darktable scribus openshot appimagelauncher yay nautilus-terminal arc-gtk-theme arc-icon-theme cantarell-fonts ttf-fira-code noto-fonts noto-fonts-extra noto-fonts-emoji noto-fonts-cjk ttf-roboto ttf-roboto-mono aspell aspell-de aspell-en hyphen hyphen-de hyphen-en neofetch speech-dispatcher unarchiver most system-config-printer tree atom audacity bleachbit brasero calibre ghidra gimp gimp-help-de gnome-builder handbrake ghc cabal-install haskell-language-server inkscape ipython kdenlive libreoffice-still libreoffice-still-de hunspell-de hunspell-en_us mythes-en mythes-de languagetool libmythes nitroshare obs-studio xreader gnome-keyring qbittorrent steam-manjaro glances virtualbox code vlc evolution )
+#aur_packages=( 1password preload itch-bin zotero-bin stacer-bin marktext-bin archlinux-artwork arch-logo-dark-wallpapers arch-linux-2d-wallpapers ttf-ms-fonts ttf-hackgen brother-dcpj315w balena-etcher bootstrap-studio edb-debugger-git github-desktop-bin gitkraken guitar-pro ida-free jdownloader2 jetbrains-toolbox kali-undercover kazam libreoffice-extension-languagetool maltego protonmail-bridge-bin rambox-bin remarkable slack-desktop spotify synology-drive synology-note-station nvidia-system-monitor-git virtualbox-ext-oracle yed zoom minecraft-launcher multimc-bin)
+#snap_packages=( remmina pomotroid )  # optional: flat-remix flat-remix-gtk
+#flatpak_packages=( "flathub org.signal.Signal" "flathub com.usebottles.bottles" )
+#######################################
+########## MAIN SCRIPT ################
+#######################################
+
 function join { local IFS="$1"; shift; echo "$*"; }
 
 # Import Key For 1Password
@@ -11,15 +43,19 @@ curl -sS https://download.spotify.com/debian/pubkey_5E3C45D7B312C643.gpg | gpg -
 # Set NumKey Enabled
 gsettings set org.gnome.desktop.peripherals.keyboard numlock-state true
 
-pacman_packages=( telegram-desktop tlp tlp-rdw brave-browser gnome-games lutris dia vim vim-spell-de vim-spell-en ghex darktable scribus openshot appimagelauncher yay nautilus-terminal arc-gtk-theme arc-icon-theme cantarell-fonts ttf-fira-code noto-fonts noto-fonts-extra noto-fonts-emoji noto-fonts-cjk ttf-roboto ttf-roboto-mono aspell aspell-de aspell-en hyphen hyphen-de hyphen-en neofetch speech-dispatcher unarchiver most system-config-printer tree atom audacity bleachbit brasero calibre ghidra gimp gimp-help-de gnome-builder handbrake ghc cabal-install haskell-language-server inkscape ipython kdenlive libreoffice-still libreoffice-still-de hunspell-de hunspell-en_us mythes-en mythes-de languagetool libmythes nitroshare obs-studio xreader gnome-keyring qbittorrent steam-manjaro glances virtualbox code vlc evolution )
-
-aur_packages=( 1password preload itch-bin zotero-bin stacer-bin marktext-bin archlinux-artwork arch-logo-dark-wallpapers arch-linux-2d-wallpapers ttf-ms-fonts ttf-hackgen brother-dcpj315w balena-etcher bootstrap-studio edb-debugger-git github-desktop-bin gitkraken guitar-pro ida-free jdownloader2 jetbrains-toolbox kali-undercover kazam libreoffice-extension-languagetool maltego protonmail-bridge-bin rambox-bin remarkable slack-desktop spotify synology-drive synology-note-station nvidia-system-monitor-git virtualbox-ext-oracle yed zoom minecraft-launcher multimc-bin)
-
-snap_packages=( remmina pomotroid )  # optional: flat-remix flat-remix-gtk
-
-flatpak_packages=( "flathub org.signal.Signal" "flathub com.usebottles.bottles" )
+pacman_packages=($pacman_pak_str)
+aur_packages=($aur_pak_str)
+snap_packages=($snap_pak_str)
+flatpak_packages=($flatpak_pak_str)
 
 logfile=step-2.log
+
+echo pacman_packages
+echo aur_packages
+echo snap_packages
+echo flatpak_packages
+
+exit 0
 
 ###########################################################
 ### Alternative ###
