@@ -12,10 +12,12 @@ logfile=step-2.log
 
 ######## Pacman Packages #########
 # Brave Browser
-pacman_pak_str+="brave-browser"
+pacman_pak_str+="brave-browser "
+
+# Windows Dual Boot Preconditions
+pacman_pak_str+="os-prober dosfstools ntfs-3g gvfs "
 
 
-pacman_pak_str+=""
 pacman_pak_str+=""
 pacman_pak_str+=""
 pacman_pak_str+=""
@@ -35,7 +37,10 @@ pacman_pak_str+=""
 
 
 ######### AUR Packages ###########
-aur_pak_str+=""
+# Arch Images
+aur_pak_str+="archlinux-artwork arch-logo-dark-wallpapers arch-linux-2d-wallpapers"
+
+
 aur_pak_str+=""
 aur_pak_str+=""
 aur_pak_str+=""

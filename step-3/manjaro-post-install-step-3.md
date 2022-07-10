@@ -58,6 +58,13 @@ Go to Pamac and remove apps
 
 See on my wiki: [https://n0raitor.com/archlinux](https://n0raitor.com/archlinux)
 
+## Terminal Appearance (optinal)
+**Gogh**
+
+```bash
+bash -c "$(curl -sLo- https://git.io/vQgMr)"gpar
+```
+
 ## Done
 
 This is the End of the "Manjaro Post Installer" steps. Feel free to add Issues, if some errors or bug occured or if you have any suggestions
