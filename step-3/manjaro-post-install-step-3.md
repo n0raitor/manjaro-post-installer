@@ -8,8 +8,6 @@ Final Steps
 
 * Open Manjaro Settings Manager and Manjaro Notifier Manager and take your changes
 
-* Enable AUR, SNAP, Flatpak in Pamac and take your Settings changes
-
 ## SSH-Key
 
 ```bash
@@ -23,7 +21,7 @@ ssh-keygen -t rsa -b 4096 -o -a 100
 export PAGER=most
 ```
 
-## Reduce Swappiness
+## Reduce Swappiness (optional)
 
 Forces System to use as much RAM as possible and reduces hard drive access
 
@@ -36,7 +34,7 @@ reboot
 cat /proc/sys/vm/swappiness  # should be 10 now
 ```
 
-## Trim SSD
+## Trim SSD (optional)
 
 Enable Trim for SSD - optimize performance of ssd-drive
 
