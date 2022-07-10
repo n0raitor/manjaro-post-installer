@@ -11,22 +11,69 @@ flatpak_pak_str=""
 logfile=step-2.log
 
 ######## Pacman Packages #########
+# Brave Browser
+pacman_pak_str+="brave-browser"
+
+
 pacman_pak_str+=""
+pacman_pak_str+=""
+pacman_pak_str+=""
+pacman_pak_str+=""
+pacman_pak_str+=""
+pacman_pak_str+=""
+pacman_pak_str+=""
+pacman_pak_str+=""
+pacman_pak_str+=""
+pacman_pak_str+=""
+pacman_pak_str+=""
+pacman_pak_str+=""
+pacman_pak_str+=""
+pacman_pak_str+=""
+pacman_pak_str+=""
+
+#pacman_packages=( telegram-desktop tlp tlp-rdw gnome-games lutris dia vim vim-spell-de vim-spell-en ghex darktable scribus openshot appimagelauncher yay nautilus-terminal arc-gtk-theme arc-icon-theme cantarell-fonts ttf-fira-code noto-fonts noto-fonts-extra noto-fonts-emoji noto-fonts-cjk ttf-roboto ttf-roboto-mono aspell aspell-de aspell-en hyphen hyphen-de hyphen-en neofetch speech-dispatcher unarchiver most system-config-printer tree atom audacity bleachbit brasero calibre ghidra gimp gimp-help-de gnome-builder handbrake ghc cabal-install haskell-language-server inkscape ipython kdenlive libreoffice-still libreoffice-still-de hunspell-de hunspell-en_us mythes-en mythes-de languagetool libmythes nitroshare obs-studio xreader gnome-keyring qbittorrent steam-manjaro glances virtualbox code vlc evolution )
+
 
 ######### AUR Packages ###########
 aur_pak_str+=""
+aur_pak_str+=""
+aur_pak_str+=""
+aur_pak_str+=""
+aur_pak_str+=""
+aur_pak_str+=""
+aur_pak_str+=""
+aur_pak_str+=""
+aur_pak_str+=""
+aur_pak_str+=""
+aur_pak_str+=""
+aur_pak_str+=""
+aur_pak_str+=""
+aur_pak_str+=""
+
+#aur_packages=( 1password preload itch-bin zotero-bin stacer-bin marktext-bin archlinux-artwork arch-logo-dark-wallpapers arch-linux-2d-wallpapers ttf-ms-fonts ttf-hackgen brother-dcpj315w balena-etcher bootstrap-studio edb-debugger-git github-desktop-bin gitkraken guitar-pro ida-free jdownloader2 jetbrains-toolbox kali-undercover kazam libreoffice-extension-languagetool maltego protonmail-bridge-bin rambox-bin remarkable slack-desktop spotify synology-drive synology-note-station nvidia-system-monitor-git virtualbox-ext-oracle yed zoom minecraft-launcher multimc-bin)
+
 
 ######### SNAP Packages ##########
 snap_pak_str+=""
+snap_pak_str+=""
+snap_pak_str+=""
+snap_pak_str+=""
+snap_pak_str+=""
+snap_pak_str+=""
+snap_pak_str+=""
 
+
+#snap_packages=( remmina pomotroid )  # optional: flat-remix flat-remix-gtk
 
 ######## Flatpak Packages ########
 flatpak_pak_str+=""
+flatpak_pak_str+=""
+flatpak_pak_str+=""
+flatpak_pak_str+=""
+flatpak_pak_str+=""
+flatpak_pak_str+=""
 
 
-#pacman_packages=( telegram-desktop tlp tlp-rdw brave-browser gnome-games lutris dia vim vim-spell-de vim-spell-en ghex darktable scribus openshot appimagelauncher yay nautilus-terminal arc-gtk-theme arc-icon-theme cantarell-fonts ttf-fira-code noto-fonts noto-fonts-extra noto-fonts-emoji noto-fonts-cjk ttf-roboto ttf-roboto-mono aspell aspell-de aspell-en hyphen hyphen-de hyphen-en neofetch speech-dispatcher unarchiver most system-config-printer tree atom audacity bleachbit brasero calibre ghidra gimp gimp-help-de gnome-builder handbrake ghc cabal-install haskell-language-server inkscape ipython kdenlive libreoffice-still libreoffice-still-de hunspell-de hunspell-en_us mythes-en mythes-de languagetool libmythes nitroshare obs-studio xreader gnome-keyring qbittorrent steam-manjaro glances virtualbox code vlc evolution )
-#aur_packages=( 1password preload itch-bin zotero-bin stacer-bin marktext-bin archlinux-artwork arch-logo-dark-wallpapers arch-linux-2d-wallpapers ttf-ms-fonts ttf-hackgen brother-dcpj315w balena-etcher bootstrap-studio edb-debugger-git github-desktop-bin gitkraken guitar-pro ida-free jdownloader2 jetbrains-toolbox kali-undercover kazam libreoffice-extension-languagetool maltego protonmail-bridge-bin rambox-bin remarkable slack-desktop spotify synology-drive synology-note-station nvidia-system-monitor-git virtualbox-ext-oracle yed zoom minecraft-launcher multimc-bin)
-#snap_packages=( remmina pomotroid )  # optional: flat-remix flat-remix-gtk
 #flatpak_packages=( "flathub org.signal.Signal" "flathub com.usebottles.bottles" )
 #######################################
 ########## MAIN SCRIPT ################
@@ -50,10 +97,10 @@ flatpak_packages=($flatpak_pak_str)
 
 logfile=step-2.log
 
-echo pacman_packages
-echo aur_packages
-echo snap_packages
-echo flatpak_packages
+echo $pacman_packages
+echo $aur_packages
+echo $snap_packages
+echo $flatpak_packages
 
 exit 0
 
@@ -112,7 +159,15 @@ for package in "${pacman_packages[@]}"
 do	
 	echo -n "Installing $package "
 	sudo pacman -S --noconfirm --needed $package &>> $logfile
-	echo "[OK]"
+
+	x=`pacman -Qi $package`
+	if [ -n "$x" ]
+		echo "[OK]"
+	else
+		echo "[FAILED]"
+		echo "$package FAILED!" &>> $logfile
+	fi
+	
 done
 
 
@@ -124,7 +179,13 @@ for package in "${aur_packages[@]}"
 do
 	echo -n "Installing $package "
 	sudo -u $username yay -S --noconfirm --needed $package &>> $logfile
-	echo "[OK]"
+	x=`pacman -Qi $package`
+	if [ -n "$x" ]
+		echo "[OK]"
+	else
+		echo "[FAILED]"
+		echo "$package FAILED!" &>> $logfile
+	fi
 done
 echo ""
 cd ..
