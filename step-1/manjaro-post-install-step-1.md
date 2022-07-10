@@ -34,6 +34,7 @@ General INIT Maintenance:
 * Open Pamac
 
   * Use Local Mirrors in Sessings
+  * Enable AUR + Snap + Flatpak (in Settings)
   * Update your System
 
 * (optional) Open Gnome Add Folder and Add all not needed default apps to a folder (or do this in the app overview)
