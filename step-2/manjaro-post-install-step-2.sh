@@ -177,7 +177,7 @@ read;
 kernel_id=${REPLY}
 echo ""
 echo -n "Installing virtualbox-host-modules "
-pacman -S linux$kernel_id-virtualbox-host-modules &>> $logfile
+pacman -S --needed --noconfirm linux$kernel_id-virtualbox-host-modules &>> $logfile
 echo "[OK]"
 
 # Prepare Graphe Plugin for IDA-free
@@ -211,6 +211,7 @@ do
 
 	x=`pacman -Qi $package`
 	if [ -n "$x" ]
+	then
 		echo "[OK]"
 	else
 		echo "[FAILED]"
@@ -230,6 +231,7 @@ do
 	sudo -u $username yay -S --noconfirm --needed $package &>> $logfile
 	x=`pacman -Qi $package`
 	if [ -n "$x" ]
+	then
 		echo "[OK]"
 	else
 		echo "[FAILED]"
@@ -240,6 +242,11 @@ echo ""
 cd ..
 rm -rf tmpaur
 
+### Installing Snaps
+# Enable Snap Sys Link and Service
+sudo systemctl enable --now snapd.socket                                 
+sudo ln -s /var/lib/snapd/snap /snap
+
 if [ $install_snaps == 1 ]
 then
 	### Installing all Snap Packages ###
@@ -247,7 +254,7 @@ then
 	for package in "${snap_packages[@]}"				  
 	do
 		echo -n "Installing $package "
-		snap install $package &>> $logfile
+		sudo -u $username snap install $package &>> $logfile
 		echo "[OK]"
 	done
 else
@@ -256,14 +263,19 @@ else
 fi
 
 
+
 ### Installing all Flatpak Packages ###
+# Enable Flathub
+flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+
+
 if [ $install_flatpaks == 1 ]
 then
 	echo "### Installing Flatpak Packages ###"
 	for package in "${flatpak_packages[@]}"				  
 	do
 		echo -n "Installing $package "
-		flatpak -y install $package &>> $logfile
+		sudo -u $username flatpak -y install $package &>> $logfile
 		echo "[OK]"
 	done
 else
@@ -277,8 +289,17 @@ fi
 #echo "[OK]"
 echo "### Installing PAMAC-Mode Packages"
 echo -n "Installing flat-remix-gnome "
-pamac install --no-confirm balena-etcher &>> $logfile
-echo "[OK]"
+sudo pamac install --no-confirm --needed balena-etcher &>> $logfile
+x=`pacman -Qi balena-etcher`
+balena_not_installed=1
+	if [ -n "$x" ]
+	then
+		echo "[OK]"
+		balena_not_installed=0
+	else
+		echo "[FAILED]"
+		echo "$package FAILED!" &>> $logfile
+	fi
 
 if [ $install_tlp == 1 ]
 then
@@ -289,18 +310,21 @@ then
 fi
 
 echo "Installing PyLint "
-sudo pacman -S python-pip
+sudo pacman -S --needed --noconfirm python-pip
 # For Python Code Checking
-pip3 install pylint
+sudo -u $username pip3 install pylint
 echo "[OK]"
 
 echo "Create Venv for Maltego and Install maltego requirements "
-mkdir -p ~/Dokumente/venv/mcti
-python3 -m venv ~/Dokumente/venv/mcti
-~/Dokumente/venv/mcti/bin/pip install requests
-~/Dokumente/venv/mcti/bin/pip install maltego-trx 
+sudo -u $username mkdir -p ~/Dokumente/venv/mcti
+sudo -u $username python3 -m venv ~/Dokumente/venv/mcti
+sudo -u $username ~/Dokumente/venv/mcti/bin/pip install requests
+sudo -u $username ~/Dokumente/venv/mcti/bin/pip install maltego-trx 
 echo "[OK]"
 
 echo "ALL DONE"
-echo "If Balena-Etcher is not installed, feel free to open the appimage in the resource folder"
+if [ $balena_not_installed == 1 ]
+then
+	echo "Balena-Etcher is not installed, feel free to open the appimage in the resource folder"
+fi
 echo "Now continue with Step 3"
