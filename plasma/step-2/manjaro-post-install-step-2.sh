@@ -22,22 +22,19 @@ pacman_pak_str+="brave-browser "
 pacman_pak_str+="os-prober dosfstools ntfs-3g gvfs "
 
 # Torrent Downloader
-pacman_pak_str+="qbittorrent "
+pacman_pak_str+="ktorrent "
 
 # Battery Manager
 if [ $install_tlp == 1 ]
 then
-	pacman_pak_str+="tlp tlp-rdw "
+	pacman_pak_str+="tlp tlpui "
 fi
 
-# For Proton Mail Bridge
-pacman_pak_str+="gnome-keyring "
-
 # Email Client
-pacman_pak_str+="evolution "
+pacman_pak_str+=" "
 
 # Media Player
-pacman_pak_str+="vlc "
+pacman_pak_str+="vkmaillc "
 
 ### Comment TODO ###
 
@@ -63,14 +60,13 @@ pacman_pak_str+="brasero "
 pacman_pak_str+="gimp gimp-help-de darktable "
 pacman_pak_str+="neofetch "
 pacman_pak_str+="calibre "
-pacman_pak_str+="gnome-builder "
 pacman_pak_str+="ipython "
 pacman_pak_str+="bleachbit "
 pacman_pak_str+="libreoffice-still libreoffice-still-de "
 pacman_pak_str+="ghidra "
 pacman_pak_str+="tree "
 pacman_pak_str+="telegram-desktop "
-pacman_pak_str+="gnome-games lutris "
+pacman_pak_str+="lutris "
 pacman_pak_str+="dia ghex "
 pacman_pak_str+="speech-dispatcher "
 pacman_pak_str+="unarchiver most system-config-printer "
@@ -113,8 +109,8 @@ aur_pak_str+="synology-drive synology-note-station "
 
 # Fonts
 aur_pak_str+="ttf-ms-fonts ttf-hackgen ttf-mac-fonts ttf-nerd-fonts-hack-complete-git ttf-gentium-basic "
-
-aur_pak_str+="brother-dcpj315w "
+brother-dcpj315w 
+aur_pak_str+=""
 aur_pak_str+="yed "
 aur_pak_str+="zoom "
 aur_pak_str+="minecraft-launcher multimc-bin "

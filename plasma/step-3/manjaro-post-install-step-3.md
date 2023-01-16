@@ -4,8 +4,6 @@ First I recommend to reboot.
 
 Final Steps
 
-* Set your Default Applications in the Settings of Gnome
-
 * Open Manjaro Settings Manager and Manjaro Notifier Manager and take your changes
 
 ## SSH-Key
@@ -50,15 +48,12 @@ sudo systemctl status fstrim.timer  # should be active now
 
 Go to Pamac and remove apps
 
-## Open Extensions
-
-... And Enable or Install Extensions
-
 ## (optional) Clean Your System and Check for Errors
 
 See on my wiki: [https://n0raitor.com/archlinux](https://n0raitor.com/archlinux)
 
 ## Terminal Appearance (optinal)
+
 **Gogh**
 
 ```bash
@@ -71,10 +66,10 @@ This is the End of the "Manjaro Post Installer" steps. Feel free to add Issues, 
 
 **Appearance**: Feel free to change the appearance e.g. using *flat-remix* of [https://drasite.com/](https://drasite.com/)
 
-
 # Optional Packages to install
 
 **Flatpak**
+
 * flatpak install flathub com.github.micahflee.torbrowser-launcher
 * flatpak install appimage-pool
 * flatpak install flathub com.github.tchx84.Flatseal
@@ -83,6 +78,7 @@ This is the End of the "Manjaro Post Installer" steps. Feel free to add Issues, 
 * flatpak install marktext
 
 **Snap**
+
 * pycharm-professional --classic
 * datagrip --classic
 * codium --classic
@@ -95,8 +91,9 @@ This is the End of the "Manjaro Post Installer" steps. Feel free to add Issues, 
 * pomotroid
 
 **General**
+
 * dolphin-emu
 * retroarch
 * timeshift-autosnap
-    * sudo systemctl enable cronie.service
+  * sudo systemctl enable cronie.service
 * veracrypt
